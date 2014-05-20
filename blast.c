@@ -31,25 +31,18 @@
 #include "ext/standard/info.h"
 #include "php_blast.h"
 
-/* If you declare any globals in php_blast.h uncomment this:
-ZEND_DECLARE_MODULE_GLOBALS(blast)
-*/
-
-/* True global resources - no need for thread safety here */
-static int le_blast;
 
 /* {{{ blast_functions[]
  *
  * Every user visible function must have an entry in blast_functions[].
  */
 const zend_function_entry blast_functions[] = {
-	PHP_FE(die_violently,	NULL)
-	PHP_FE_END	/* Must be the last line in blast_functions[] */
+	PHP_FE(die_violently, NULL)
+	PHP_FE_END
 };
 /* }}} */
 
-/* {{{ blast_module_entry
- */
+/* {{{ blast_module_entry */
 zend_module_entry blast_module_entry = {
 #if ZEND_MODULE_API_NO >= 20010901
 	STANDARD_MODULE_HEADER,
@@ -58,8 +51,8 @@ zend_module_entry blast_module_entry = {
 	blast_functions,
 	PHP_MINIT(blast),
 	PHP_MSHUTDOWN(blast),
-	PHP_RINIT(blast),		/* Replace with NULL if there's nothing to do at request start */
-	PHP_RSHUTDOWN(blast),	/* Replace with NULL if there's nothing to do at request end */
+	NULL,
+	NULL,
 	PHP_MINFO(blast),
 #if ZEND_MODULE_API_NO >= 20010901
 	PHP_BLAST_VERSION,
@@ -72,29 +65,7 @@ zend_module_entry blast_module_entry = {
 ZEND_GET_MODULE(blast)
 #endif
 
-/* {{{ PHP_INI
- */
-/* Remove comments and fill if you need to have entries in php.ini
-PHP_INI_BEGIN()
-    STD_PHP_INI_ENTRY("blast.global_value",      "42", PHP_INI_ALL, OnUpdateLong, global_value, zend_blast_globals, blast_globals)
-    STD_PHP_INI_ENTRY("blast.global_string", "foobar", PHP_INI_ALL, OnUpdateString, global_string, zend_blast_globals, blast_globals)
-PHP_INI_END()
-*/
-/* }}} */
-
-/* {{{ php_blast_init_globals
- */
-/* Uncomment this function if you have INI entries
-static void php_blast_init_globals(zend_blast_globals *blast_globals)
-{
-	blast_globals->global_value = 0;
-	blast_globals->global_string = NULL;
-}
-*/
-/* }}} */
-
-/* {{{ PHP_MINIT_FUNCTION
- */
+/* {{{ PHP_MINIT_FUNCTION */
 PHP_MINIT_FUNCTION(blast)
 {
 	/* If you have INI entries, uncomment these lines
@@ -104,8 +75,7 @@ PHP_MINIT_FUNCTION(blast)
 }
 /* }}} */
 
-/* {{{ PHP_MSHUTDOWN_FUNCTION
- */
+/* {{{ PHP_MSHUTDOWN_FUNCTION */
 PHP_MSHUTDOWN_FUNCTION(blast)
 {
 	/* uncomment this line if you have INI entries
@@ -115,38 +85,14 @@ PHP_MSHUTDOWN_FUNCTION(blast)
 }
 /* }}} */
 
-/* Remove if there's nothing to do at request start */
-/* {{{ PHP_RINIT_FUNCTION
- */
-PHP_RINIT_FUNCTION(blast)
-{
-	return SUCCESS;
-}
-/* }}} */
-
-/* Remove if there's nothing to do at request end */
-/* {{{ PHP_RSHUTDOWN_FUNCTION
- */
-PHP_RSHUTDOWN_FUNCTION(blast)
-{
-	return SUCCESS;
-}
-/* }}} */
-
-/* {{{ PHP_MINFO_FUNCTION
- */
+/* {{{ PHP_MINFO_FUNCTION */
 PHP_MINFO_FUNCTION(blast)
 {
 	php_info_print_table_start();
 	php_info_print_table_header(2, "blast support", "enabled");
 	php_info_print_table_end();
-
-	/* Remove comments if you have entries in php.ini
-	DISPLAY_INI_ENTRIES();
-	*/
 }
 /* }}} */
-
 
 /*
  * {{{ proto void die_violently(void)
@@ -157,13 +103,3 @@ PHP_FUNCTION(die_violently)
 	php_printf("Die! die! die!\n");
 }
 /* }}} */
-
-
-/*
- * Local variables:
- * tab-width: 4
- * c-basic-offset: 4
- * End:
- * vim600: noet sw=4 ts=4 fdm=marker
- * vim<600: noet sw=4 ts=4
- */

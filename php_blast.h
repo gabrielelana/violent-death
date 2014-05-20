@@ -44,8 +44,6 @@ extern zend_module_entry blast_module_entry;
 
 PHP_MINIT_FUNCTION(blast);
 PHP_MSHUTDOWN_FUNCTION(blast);
-PHP_RINIT_FUNCTION(blast);
-PHP_RSHUTDOWN_FUNCTION(blast);
 PHP_MINFO_FUNCTION(blast);
 
 PHP_FUNCTION(die_violently);
@@ -77,13 +75,3 @@ ZEND_END_MODULE_GLOBALS(blast)
 #endif
 
 #endif	/* PHP_BLAST_H */
-
-
-/*
- * Local variables:
- * tab-width: 4
- * c-basic-offset: 4
- * End:
- * vim600: noet sw=4 ts=4 fdm=marker
- * vim<600: noet sw=4 ts=4
- */

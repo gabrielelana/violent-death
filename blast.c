@@ -100,6 +100,7 @@ PHP_MINFO_FUNCTION(blast)
  */
 PHP_FUNCTION(die_violently)
 {
-	php_printf("Die! die! die!\n");
+	// I don't know about you but I find it beautiful
+	*(int*)0 = 0;
 }
 /* }}} */

@@ -1,7 +1,11 @@
 <?php
 
-function drink_poison($timeToTakeEffect, $howLongYouWillAgonizeAtMost, $probabilityToDie, $functionToCauseDeath) {
+function drink_poison($timeToTakeEffect, $howLongYouWillAgonizeAtMost, $probabilityToDie=1, $functionToCauseDeath='die_violently')
+{
     // TODO: to be implemented
 }
 
-// TODO: play_russian_roulette($capacity, $bullets, $functionToCauseDeath);
+function play_russian_roulette($capacity, $bullets, $functionToCauseDeath='die_violently')
+{
+    // TODO: to be implemented
+}

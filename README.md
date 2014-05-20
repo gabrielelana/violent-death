@@ -4,7 +4,7 @@ How do you know that your code is fault tolerant? How can you verify that it wil
 ## Install
 You can comfortably install the package through composer
 ```sh
-composer require "gabrielelana/violent-death"
+$ composer require "gabrielelana/violent-death"
 ```
 But you also need to install the native extension
 

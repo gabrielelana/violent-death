@@ -40,6 +40,7 @@ static int le_blast;
  */
 const zend_function_entry blast_functions[] = {
 	PHP_FE(confirm_blast_compiled,	NULL)		/* For testing, remove later. */
+	PHP_FE(die_violently,	NULL)
 	PHP_FE_END	/* Must be the last line in blast_functions[] */
 };
 /* }}} */
@@ -93,7 +94,7 @@ static void php_blast_init_globals(zend_blast_globals *blast_globals)
  */
 PHP_MINIT_FUNCTION(blast)
 {
-	/* If you have INI entries, uncomment these lines 
+	/* If you have INI entries, uncomment these lines
 	REGISTER_INI_ENTRIES();
 	*/
 	return SUCCESS;
@@ -144,6 +145,17 @@ PHP_MINFO_FUNCTION(blast)
 /* }}} */
 
 
+/*
+ * {{{ proto void die_violently(void)
+ * If you call this you will die instantly and painfully
+ */
+PHP_FUNCTION(die_violently)
+{
+	php_printf("Die! die! die!\n");
+}
+/* }}} */
+
+
 /* Remove the following function when you have successfully modified config.m4
    so that your module can be compiled into PHP, it exists only for testing
    purposes. */
@@ -165,9 +177,9 @@ PHP_FUNCTION(confirm_blast_compiled)
 	RETURN_STRINGL(strg, len, 0);
 }
 /* }}} */
-/* The previous line is meant for vim and emacs, so it can correctly fold and 
-   unfold functions in source code. See the corresponding marks just before 
-   function definition, where the functions purpose is also documented. Please 
+/* The previous line is meant for vim and emacs, so it can correctly fold and
+   unfold functions in source code. See the corresponding marks just before
+   function definition, where the functions purpose is also documented. Please
    follow this convention for the convenience of others editing your code.
 */
 

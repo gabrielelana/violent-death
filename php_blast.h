@@ -44,7 +44,6 @@ PHP_RINIT_FUNCTION(blast);
 PHP_RSHUTDOWN_FUNCTION(blast);
 PHP_MINFO_FUNCTION(blast);
 
-PHP_FUNCTION(confirm_blast_compiled);	/* For testing, remove later. */
 PHP_FUNCTION(die_violently);
 
 /*

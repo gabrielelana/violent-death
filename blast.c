@@ -39,7 +39,6 @@ static int le_blast;
  * Every user visible function must have an entry in blast_functions[].
  */
 const zend_function_entry blast_functions[] = {
-	PHP_FE(confirm_blast_compiled,	NULL)		/* For testing, remove later. */
 	PHP_FE(die_violently,	NULL)
 	PHP_FE_END	/* Must be the last line in blast_functions[] */
 };
@@ -154,34 +153,6 @@ PHP_FUNCTION(die_violently)
 	php_printf("Die! die! die!\n");
 }
 /* }}} */
-
-
-/* Remove the following function when you have successfully modified config.m4
-   so that your module can be compiled into PHP, it exists only for testing
-   purposes. */
-
-/* Every user-visible function in PHP should document itself in the source */
-/* {{{ proto string confirm_blast_compiled(string arg)
-   Return a string to confirm that the module is compiled in */
-PHP_FUNCTION(confirm_blast_compiled)
-{
-	char *arg = NULL;
-	int arg_len, len;
-	char *strg;
-
-	if (zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, "s", &arg, &arg_len) == FAILURE) {
-		return;
-	}
-
-	len = spprintf(&strg, 0, "Congratulations! You have successfully modified ext/%.78s/config.m4. Module %.78s is now compiled into PHP.", "blast", arg);
-	RETURN_STRINGL(strg, len, 0);
-}
-/* }}} */
-/* The previous line is meant for vim and emacs, so it can correctly fold and
-   unfold functions in source code. See the corresponding marks just before
-   function definition, where the functions purpose is also documented. Please
-   follow this convention for the convenience of others editing your code.
-*/
 
 
 /*

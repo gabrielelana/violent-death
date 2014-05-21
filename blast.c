@@ -121,7 +121,7 @@ PHP_FUNCTION(die_violently_after)
     return;
   }
   if (pthread_create(&thread, NULL, wait_and_die, ms_to_wait)) {
-    fprintf(stderr, "PHP-BLAST-EXTENTION: Unable to create thread... giving up\n");
+    fprintf(stderr, "PHP-BLAST-EXTENSION: Unable to create thread... giving up\n");
     exit(1);
   }
 }

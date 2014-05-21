@@ -40,8 +40,8 @@ while(true) {
 ## How Does It Work?
 To create a segmentation fault we rely on a C extension. To eventually create a segmentation fault in the future (while the code is doing something else) we create a background thread that will wait some amount of time and then cause a segmentation fault.
 
-## Gotcha
-You need to be able to compile a PHP extension and you need the `pthread` library installed.
+## Gotchas
+You need to be able to compile a PHP extension and you need the `pthread` library installed. The segmentation fault it's not guaranteed on all platforms (aka for every combination of C compiler, OS kernel and CPU architecture), AFAIK the notion of segmentation fault it's not part of any ANSI C standard so there's no standard way to create a genuine segmentation fault.
 
 ## Overview
 

@@ -30,6 +30,13 @@ while(true) {
 }
 ```
 
+## Overview
+
+### `drink_poison($msToTakeEffect, $msToAgonizeAtMost, $probabilityToDie)`
+### `play_russian_roulette($probabilityToDie)`
+### In Blast Extension: `die_violently_after($msToWait)`
+### In Blast Extension: `die_violently($msToWait)`
+
 ## Install
 You can comfortably install the package through composer
 ```sh

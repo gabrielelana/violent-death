@@ -1,0 +1,13 @@
+language: php
+php:
+  - 5.4
+  - 5.5
+  - 5.6
+
+before_script:
+  - sh -c "phpize && ./configure --with-pthread && make && make install"
+  - sh -c "echo extension=functional.so | tee -a /home/vagrant/.phpenv/versions/*/etc/php.ini"
+  - composer install
+
+script:
+  - vendor/bin/phpunit

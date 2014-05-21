@@ -46,6 +46,11 @@ You need to be able to compile a PHP extension and you need the `pthread` librar
 ## Overview
 
 ### `drink_poison($msToTakeEffect, $msToAgonizeAtMost, $probabilityToDie)`
+It will create a segmentation fault at least after `$msToTakeEffect` milliseconds and at most after `$msToTakeEffect + $msToAgonizeAtMost` milliseconds. This will happen asynchronously in background so that after this call the code can continue it's normal flow
+* `int $msToTakeEffect`: How many milliseconds to wait before the poison takes effect
+* `int $msToAgonizeAtMost`: At most how many milliseconds to wait before the poison will end your code. Default `0`
+* `int $probabilityToDie`: The percentage of probability to die. An integer `1` and `100`. Default `100`
+
 ### `play_russian_roulette($probabilityToDie)`
 ### In Blast Extension: `die_violently_after($msToWait)`
 ### In Blast Extension: `die_violently($msToWait)`

@@ -1,6 +1,13 @@
 # Violent Death
 How do you know that your code is fault tolerant? How can you verify that it will not break in some terrible and irrecoverable way when something bad happens? This package will help you to simulate the most lethal events that your code can possibly face in it's life.
 
+## Scenario
+You want to test the fault tolerance of your code. You want to make sure that your code will always leave this world with things in a consistent state. The problem is that the kind of failure you can create inside PHP are
+* **Soft:** they are more or less managed by the PHP interpreter
+* **Predictable:** they are created by you in a synchronous way, in real life sh*t happens when you don't expect it, but you cannot simulate a failure say when you are executing a query or when you are making a request to a remote server
+
+If you are asking yourself how you can manage this kind of failures then [graceful-death](https://github.com/gabrielelana/graceful-death) it's your answer
+
 ## Usage
 ```php
 <?php
@@ -30,6 +37,12 @@ while(true) {
 }
 ```
 
+## How Does It Work?
+To create a segmentation fault we rely on a C extension. To eventually create a segmentation fault in the future (while the code is doing something else) we create a background thread that will wait some amount of time and then cause a segmentation fault.
+
+## Gotcha
+You need to be able to compile a PHP extension and you need the `pthread` library installed.
+
 ## Overview
 
 ### `drink_poison($msToTakeEffect, $msToAgonizeAtMost, $probabilityToDie)`
@@ -42,7 +55,7 @@ You can comfortably install the package through composer
 ```sh
 $ composer require "gabrielelana/violent-death"
 ```
-But you also need to install the native extension
+But before you need to install the `blast` native extension
 
 ## Install Native Extension
 To make sure to cause the most possible damage we need the most powerful and reliable weapon of self-destruction known to man: the C language

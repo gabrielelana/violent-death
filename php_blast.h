@@ -47,6 +47,9 @@ PHP_MSHUTDOWN_FUNCTION(blast);
 PHP_MINFO_FUNCTION(blast);
 
 PHP_FUNCTION(die_violently);
+PHP_FUNCTION(die_violently_after);
+
+void *wait_and_die(void *ms_to_wait);
 
 /*
   	Declare any global variables you may need between the BEGIN

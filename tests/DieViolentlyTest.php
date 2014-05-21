@@ -14,4 +14,9 @@ class DieViolentlyTest extends PHPUnit_Framework_TestCase
     {
         $this->assertContains('die_violently', get_extension_funcs('blast'));
     }
+
+    public function testExtensionContainsDieViolentlyAfterFunction()
+    {
+        $this->assertContains('die_violently_after', get_extension_funcs('blast'));
+    }
 }

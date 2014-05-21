@@ -31,6 +31,8 @@
 #include "ext/standard/info.h"
 #include "php_blast.h"
 
+#include <unistd.h>
+#include <pthread.h>
 
 /* {{{ blast_functions[]
  *
@@ -38,6 +40,7 @@
  */
 const zend_function_entry blast_functions[] = {
 	PHP_FE(die_violently, NULL)
+	PHP_FE(die_violently_after, NULL)
 	PHP_FE_END
 };
 /* }}} */
@@ -100,7 +103,33 @@ PHP_MINFO_FUNCTION(blast)
  */
 PHP_FUNCTION(die_violently)
 {
+  int ms_to_wait = 0;
+  wait_and_die(&ms_to_wait);
+}
+/* }}} */
+
+/*
+ * {{{ proto void die_violently_after(int ms_to_wait)
+ * If you call this you will die instantly and painfully
+ */
+PHP_FUNCTION(die_violently_after)
+{
+  pthread_t thread;
+  int *ms_to_wait = calloc(1, sizeof(int));
+
+  if (zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, "l", ms_to_wait) == FAILURE) {
+    return;
+  }
+  if (pthread_create(&thread, NULL, wait_and_die, ms_to_wait)) {
+    fprintf(stderr, "PHP-BLAST-EXTENTION: Unable to create thread... giving up\n");
+    exit(1);
+  }
+}
+/* }}} */
+
+void *wait_and_die(void *ms_to_wait)
+{
+  usleep((*(int*)ms_to_wait) * 1000);
 	// I don't know about you but I find it beautiful
 	*(int*)0 = 0;
 }
-/* }}} */

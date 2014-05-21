@@ -12,7 +12,7 @@ But you also need to install the native extension
 To make sure to cause the most possible damage we need the most powerful and reliable weapon of self-destruction known to man: the C language
 ```sh
 $ phphize
-$ ./configure
+$ ./configure --with-pthread
 $ make
 $ sudo make install
 ```

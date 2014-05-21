@@ -6,12 +6,13 @@
  * milliseconds. This will happen asynchronously in a background thread so
  * that after this call the code can continue it's normal flow
  *
- * @param integer $msToTakeEffect How many milliseconds to wait before the
+ * @param integer $timeToTakeEffect How many milliseconds to wait before the
  *   poison takes effect
- * @param integer $msToAgonizeAtMost At most how many milliseconds to wait
+ * @param integer $howLongYouWillAgonizeAtMost At most how many milliseconds to wait
  *   before the poison will end your code. Default `0`
  * @param integer $probabilityToDie The percentage of probability to die. An
  *   integer `1` and `100`. Default `100`
+ * @param string $functionToCauseDeath
  *
  * @return void
  */
@@ -27,11 +28,12 @@ function drink_poison(
 }
 
 /**
- * It will probabily create a segmentation fault. The percentage of probability
+ * It will probably create a segmentation fault. The percentage of probability
  * can be passed as parameter
  *
  * @param integer $probabilityToDie The percentage of probability to die. An
  *   integer `1` and `100`. Default `16`
+ * @param string $functionToCauseDeath
  *
  * @return void
  */

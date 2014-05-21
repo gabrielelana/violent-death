@@ -34,7 +34,6 @@ class DieViolentlyTest extends PHPUnit_Framework_TestCase
         fclose($pipes[1]);
         fclose($pipes[2]);
         $status = proc_get_status($process);
-        $this->assertTrue($status['signaled']);
-        $this->assertEquals(11, $status['termsig']);
+        $this->assertNotEquals(0, $status['exitcode']);
     }
 }

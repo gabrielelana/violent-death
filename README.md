@@ -52,6 +52,9 @@ It will create a segmentation fault at least after `$msToTakeEffect` millisecond
 * `int $probabilityToDie`: The percentage of probability to die. An integer `1` and `100`. Default `100`
 
 ### `play_russian_roulette($probabilityToDie)`
+It will probably create a segmentation fault. The percentage of probability can be passed as parameter
+* `int $probabilityToDie`: The percentage of probability to die. An integer `1` and `100`. Default `16`
+
 ### In Blast Extension: `die_violently_after($msToWait)`
 ### In Blast Extension: `die_violently($msToWait)`
 

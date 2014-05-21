@@ -1,11 +1,26 @@
 <?php
 
-function drink_poison($timeToTakeEffect, $howLongYouWillAgonizeAtMost, $probabilityToDie=1, $functionToCauseDeath='die_violently')
+function drink_poison(
+    $timeToTakeEffect, $howLongYouWillAgonizeAtMost=0,
+    $probabilityToDie=100, $functionToCauseDeath='die_violently_after'
+)
 {
-    // TODO: to be implemented
+    if (!is_callable($functionToCauseDeath)) {
+        throw new Exception('Expected a callable element as last parameter');
+    }
+
+    $probabilityToDie = is_bool($probabilityToDie) ? 100 : $probabilityToDie;
+    $probabilityToDie = $probabilityToDie < 1 ? $probabilityToDie * 100 : $probabilityToDie;
+    $probabilityToDie = min(100, max(1, $probabilityToDie));
+
+    if (mt_rand(1, 100) <= round($probabilityToDie)) {
+        $functionToCauseDeath(
+            $timeToTakeEffect + rand(0, $howLongYouWillAgonizeAtMost)
+        );
+    }
 }
 
-function play_russian_roulette($capacity, $bullets, $functionToCauseDeath='die_violently')
+function play_russian_roulette($probabilityToDie=16, $functionToCauseDeath='die_violently')
 {
     // TODO: to be implemented
 }

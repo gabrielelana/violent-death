@@ -6,7 +6,7 @@ You want to test the fault tolerance of your code. You want to make sure that yo
 * **Soft:** they are more or less managed by the PHP interpreter
 * **Predictable:** they are created by you in a synchronous way, in real life sh*t happens when you don't expect it, but you cannot simulate a failure say when you are executing a query or when you are making a request to a remote server
 
-If you are asking yourself how you can manage this kind of failures then [graceful-death](https://github.com/gabrielelana/graceful-death) it's your answer
+If you are asking yourself how can you manage this kind of failures then [graceful-death](https://github.com/gabrielelana/graceful-death) it's your answer
 
 ## Usage
 ```php
@@ -41,19 +41,19 @@ while(true) {
 To create a segmentation fault we rely on a C extension. To eventually create a segmentation fault in the future (while the code is doing something else) we create a background thread that will wait some amount of time and then cause a segmentation fault.
 
 ## Gotchas
-You need to be able to compile a PHP extension and you need the `pthread` library installed. The segmentation fault it's not guaranteed on all platforms (aka for every combination of C compiler, OS kernel and CPU architecture), AFAIK the notion of segmentation fault it's not part of any ANSI C standard so there's no standard way to create a genuine segmentation fault.
+You need to be able to compile a PHP extension and you need the `pthread` library installed. The segmentation fault it's not guaranteed on all platforms (aka for every combination of C compiler, OS kernel and CPU architecture), so it may not work, AFAIK the notion of segmentation fault it's not part of any ANSI C standard so there's no standard way to create a genuine segmentation fault.
 
 ## Overview
 
 ### `drink_poison($msToTakeEffect, $msToAgonizeAtMost, $probabilityToDie)`
-It will create a segmentation fault at least after `$msToTakeEffect` milliseconds and at most after `$msToTakeEffect + $msToAgonizeAtMost` milliseconds. This will happen asynchronously in background thread so that after this call the code can continue it's normal flow
+It will create a segmentation fault at least after `$msToTakeEffect` milliseconds and at most after `$msToTakeEffect + $msToAgonizeAtMost` milliseconds. This will happen asynchronously in a background thread so that after this call the code can continue its normal flow
 * `int $msToTakeEffect`: How many milliseconds to wait before the poison takes effect
 * `int $msToAgonizeAtMost`: At most how many milliseconds to wait before the poison will end your code. Default `0`
-* `int $probabilityToDie`: The percentage of probability to die. An integer `1` and `100`. Default `100`
+* `int $probabilityToDie`: The percentage of probability to die. An integer between `1` and `100`. Default `100`
 
 ### `play_russian_roulette($probabilityToDie)`
 It will probably create a segmentation fault. The percentage of probability can be passed as parameter
-* `int $probabilityToDie`: The percentage of probability to die. An integer `1` and `100`. Default `16`
+* `int $probabilityToDie`: The percentage of probability to die. An integer between `1` and `100`. Default `16`
 
 ### In Blast Extension: `die_violently_after($msToWait)`
 ### In Blast Extension: `die_violently($msToWait)`

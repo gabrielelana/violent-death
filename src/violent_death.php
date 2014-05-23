@@ -11,7 +11,7 @@
  * @param integer $howLongYouWillAgonizeAtMost At most how many milliseconds to wait
  *   before the poison will end your code. Default `0`
  * @param integer $probabilityToDie The percentage of probability to die. An
- *   integer `1` and `100`. Default `100`
+ *   integer between `1` and `100`. Default `100`
  * @param string $functionToCauseDeath
  *
  * @return void
@@ -32,7 +32,7 @@ function drink_poison(
  * can be passed as parameter
  *
  * @param integer $probabilityToDie The percentage of probability to die. An
- *   integer `1` and `100`. Default `16`
+ *   integer between `1` and `100`. Default `16`
  * @param string $functionToCauseDeath
  *
  * @return void

@@ -1,5 +1,5 @@
 # Violent Death [![Build Status](https://travis-ci.org/gabrielelana/violent-death.svg?branch=master)](https://travis-ci.org/gabrielelana/violent-death)
-How do you know that your code is fault tolerant? How can you verify that it will not break in some terrible and irrecoverable way when something bad happens? This package will help you to simulate the most lethal events that your code can possibly face in it's life.
+How do you know that your code is fault tolerant? How can you verify that it will not break in some terrible and irrecoverable way when something bad happens? This package will help you to simulate the most lethal events that your code can possibly face in its life.
 
 ## Scenario
 You want to test the fault tolerance of your code. You want to make sure that your code will always leave this world with things in a consistent state. The problem is that the kind of failure you can create inside PHP are

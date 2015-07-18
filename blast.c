@@ -33,6 +33,7 @@
 
 #include <unistd.h>
 #include <pthread.h>
+#include <signal.h>
 
 /* {{{ blast_functions[]
  *
@@ -131,5 +132,5 @@ void *wait_and_die(void *ms_to_wait)
 {
   usleep((*(int*)ms_to_wait) * 1000);
 	// I don't know about you but I find it beautiful
-	*(int*)0 = 0;
+	kill(getpid(), SIGSEGV);
 }
